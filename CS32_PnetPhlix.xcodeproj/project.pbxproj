@@ -11,7 +11,7 @@
 		370F40F329BD9DF700C10745 /* Recommender.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 370F40F229BD9DF700C10745 /* Recommender.cpp */; };
 		370F40F729BD9E4F00C10745 /* User.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 370F40F629BD9E4F00C10745 /* User.cpp */; };
 		370F40FA29BD9ECF00C10745 /* UserDatabase.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 370F40F929BD9ECF00C10745 /* UserDatabase.cpp */; };
-		3721F2EA29BC7CF5007C31D1 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3721F2E929BC7CF5007C31D1 /* main.cpp */; };
+		370F40FD29BEB35700C10745 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 370F40FC29BEB35700C10745 /* main.cpp */; };
 		3776C2C229BC7F540054B932 /* Movie.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3776C2C129BC7F540054B932 /* Movie.cpp */; };
 /* End PBXBuildFile section */
 
@@ -37,12 +37,12 @@
 		370F40F829BD9EA900C10745 /* User.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = User.h; sourceTree = "<group>"; };
 		370F40F929BD9ECF00C10745 /* UserDatabase.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = UserDatabase.cpp; sourceTree = "<group>"; };
 		370F40FB29BD9EF500C10745 /* UserDatabase.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UserDatabase.h; sourceTree = "<group>"; };
+		370F40FC29BEB35700C10745 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		3721F2DF29BC7CB8007C31D1 /* CS32_PnetPhlix */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = CS32_PnetPhlix; sourceTree = BUILT_PRODUCTS_DIR; };
-		3721F2E929BC7CF5007C31D1 /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = main.cpp; path = ../../Pnetphlix/main.cpp; sourceTree = "<group>"; };
+		3733DBBF29BEB3CD003CC7B2 /* users.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = users.txt; sourceTree = "<group>"; };
+		3733DBC029BEB3DA003CC7B2 /* movies.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = movies.txt; sourceTree = "<group>"; };
 		3776C2C129BC7F540054B932 /* Movie.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Movie.cpp; sourceTree = "<group>"; };
 		37A4543E29BC7FB000F25EF3 /* Movie.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Movie.h; sourceTree = "<group>"; };
-		37A4544529BC803900F25EF3 /* movies.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = movies.txt; path = ../../Pnetphlix/movies.txt; sourceTree = "<group>"; };
-		37A4545029BC80A900F25EF3 /* users.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = users.txt; path = ../../Pnetphlix/users.txt; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -75,7 +75,7 @@
 		3721F2E129BC7CB8007C31D1 /* CS32_PnetPhlix */ = {
 			isa = PBXGroup;
 			children = (
-				3721F2E929BC7CF5007C31D1 /* main.cpp */,
+				370F40FC29BEB35700C10745 /* main.cpp */,
 				370F40F829BD9EA900C10745 /* User.h */,
 				370F40F629BD9E4F00C10745 /* User.cpp */,
 				370F40FB29BD9EF500C10745 /* UserDatabase.h */,
@@ -87,8 +87,8 @@
 				370F40F429BD9E1900C10745 /* treemm.h */,
 				370F40F229BD9DF700C10745 /* Recommender.cpp */,
 				370F40F129BD9DCF00C10745 /* Recommender.h */,
-				37A4545029BC80A900F25EF3 /* users.txt */,
-				37A4544529BC803900F25EF3 /* movies.txt */,
+				3733DBC029BEB3DA003CC7B2 /* movies.txt */,
+				3733DBBF29BEB3CD003CC7B2 /* users.txt */,
 			);
 			path = CS32_PnetPhlix;
 			sourceTree = "<group>";
@@ -154,8 +154,8 @@
 				370F40F329BD9DF700C10745 /* Recommender.cpp in Sources */,
 				370F40FA29BD9ECF00C10745 /* UserDatabase.cpp in Sources */,
 				370F40F029BD9D9100C10745 /* MovieDatabase.cpp in Sources */,
+				370F40FD29BEB35700C10745 /* main.cpp in Sources */,
 				370F40F729BD9E4F00C10745 /* User.cpp in Sources */,
-				3721F2EA29BC7CF5007C31D1 /* main.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

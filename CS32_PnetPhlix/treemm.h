@@ -17,25 +17,32 @@ class TreeMultimap
       public:
         Iterator()
         {
-            // Replace this line with correct code.
+            m_object = nullptr;
+        }
+        Iterator(std::vector<ValueType>* p){
+            m_object = p;
+            it = (*m_object).begin();
         }
 
         ValueType& get_value() const
         {
-            throw 1;  // Replace this line with correct code.
+            return (*it);
         }
 
         bool is_valid() const
         {
-            return false;  // Replace this line with correct code.
+            if(m_object!= nullptr && it != (*m_object).end()) return true;
+            else return false;
         }
 
         void advance()
         {
-            // Replace this line with correct code.
+            it++;
         }
 
       private:
+        std::vector<ValueType>* m_object;
+        typename std::vector<ValueType>::iterator it;
     };
 
     TreeMultimap()
@@ -57,7 +64,10 @@ class TreeMultimap
 
     Iterator find(const KeyType& key) const
     {
-        return Iterator();  // Replace this line with correct code.
+        Node* ptr_to_key_node = findHelper(key, m_root);
+        if(ptr_to_key_node == nullptr) return Iterator();
+        //This line is kind of confusing, it's getting the address of vector stored in the node
+        else return Iterator(&(ptr_to_key_node->m_vals));
     }
 
   private:
@@ -113,6 +123,14 @@ class TreeMultimap
             else insertHelper(root->right, key, val);
         }
     
+    }
+    
+    Node* findHelper(const KeyType& key, Node* curr) const{
+        //This helper function will return a pointer to the Node, if the key is found, otherwise it will return nullptr
+        if(curr == nullptr) return nullptr;
+        else if(key == curr->m_key) return curr;
+        else if(key < curr->m_key) return findHelper(key, curr->left);
+        else return findHelper(key, curr->right);
     }
 };
 
