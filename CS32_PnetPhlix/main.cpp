@@ -38,7 +38,7 @@ const string MOVIE_DATAFILE = "movies.txt";
 
 int main()
 {
-    
+
 }
 
 
@@ -107,4 +107,19 @@ int main()
  it = tree.find("laura");
  if (!it.is_valid())
  std::cout << "laura is not in the multimap!\n";
+ */
+
+//Test User Database
+/*
+ UserDatabase userdb = UserDatabase();
+ userdb.load("users");
+ User* carey = userdb.get_user_from_email("AbFow2483@charter.net");
+ if(carey == nullptr) cout << "No user in db" << endl;
+ else cout << carey->get_full_name() <<endl;
+ 
+ cout << carey->get_email() << endl;
+ vector<string> watch_history = carey->get_watch_history();
+ for(int i = 0; i < watch_history.size(); i++){
+ cout << watch_history[i] << endl;
+ }
  */

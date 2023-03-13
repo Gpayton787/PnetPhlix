@@ -21,7 +21,8 @@ UserDatabase::UserDatabase()
 
 bool UserDatabase::load(const string& filename)
 {
-    ifstream infile(filename + ".txt");    // infile is a name of our choosing
+    //filename + ".txt"
+    ifstream infile("/Users/greg/desktop/CS32/CS32_PnetPhlix/CS32_PnetPhlix/users.txt");    // infile is a name of our choosing
     if ( ! infile )                // Did opening the file fail?
     {
         cerr << "Error: Cannot open data.txt!" << endl;
@@ -45,17 +46,18 @@ bool UserDatabase::load(const string& filename)
         //Skip a line
         string foo;
         getline(infile, foo);
-    
-//        User* new_user = new User(name, email, watch_history);
-        
+        userTree.insert(email, User(name, email, watch_history));
     }
     
     
     
-    return false;  // Replace this line with correct code.
+    return true;  // Replace this line with correct code.
 }
 
 User* UserDatabase::get_user_from_email(const string& email) const
 {
-    return nullptr;
+    TreeMultimap<string, User>::Iterator it = userTree.find(email);
+    if(!it.is_valid()) return nullptr;
+    User* userptr = &it.get_value();
+    return userptr;
 }
