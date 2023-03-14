@@ -22,7 +22,10 @@ class UserDatabase
     User* get_user_from_email(const std::string& email) const;
 
   private:
+    //Consider changing to constant reference, actaully dw abt it
     TreeMultimap<std::string, User> userTree;
+    bool m_loaded = false;
+    
 };
 
 #endif // USERDATABASE_INCLUDED

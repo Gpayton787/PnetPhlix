@@ -7,6 +7,7 @@
 
 #include "UserDatabase.h"
 #include "User.h"
+#include "MovieDatabase.h"
 #include "Movie.h"
 #include <iostream>
 #include <string>
@@ -32,14 +33,20 @@ using namespace std;
   // data files to makde debuggiing easier, so you can replace the string
   // literals with the names of those smaller files.
 
-const string USER_DATAFILE  = "users.txt";
-const string MOVIE_DATAFILE = "movies.txt";
+const string USER_DATAFILE  = "/Users/greg/desktop/CS32/CS32_PnetPhlix/CS32_PnetPhlix/users.txt";
+const string MOVIE_DATAFILE = "/Users/greg/desktop/CS32/CS32_PnetPhlix/CS32_PnetPhlix/movies.txt";
 #include <vector>
 
 int main()
 {
+    //Moviedatabase test
+    MovieDatabase moviedb = MovieDatabase();
+    moviedb.load(MOVIE_DATAFILE);
+    moviedb.
+    
 
 }
+
 
 
 //Given
@@ -110,16 +117,14 @@ int main()
  */
 
 //Test User Database
-/*
- UserDatabase userdb = UserDatabase();
- userdb.load("users");
- User* carey = userdb.get_user_from_email("AbFow2483@charter.net");
- if(carey == nullptr) cout << "No user in db" << endl;
- else cout << carey->get_full_name() <<endl;
+// UserDatabase userdb = UserDatabase();
+// userdb.load(USER_DATAFILE);
+// User* carey = userdb.get_user_from_email("AbFow2483@charter.net");
+// if(carey == nullptr) cout << "No user in db" << endl;
+// else cout << carey->get_full_name() <<endl;
+//
+// cout << carey->get_email() << endl;
+// vector<string> watch_history = carey->get_watch_history();
+// for(int i = 0; i < watch_history.size(); i++){
+// cout << watch_history[i] << endl;
  
- cout << carey->get_email() << endl;
- vector<string> watch_history = carey->get_watch_history();
- for(int i = 0; i < watch_history.size(); i++){
- cout << watch_history[i] << endl;
- }
- */

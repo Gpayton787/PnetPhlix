@@ -21,8 +21,9 @@ UserDatabase::UserDatabase()
 
 bool UserDatabase::load(const string& filename)
 {
-    //filename + ".txt"
-    ifstream infile("/Users/greg/desktop/CS32/CS32_PnetPhlix/CS32_PnetPhlix/users.txt");    // infile is a name of our choosing
+    if(m_loaded) return false;
+    
+    ifstream infile(filename);    // infile is a name of our choosing
     if ( ! infile )                // Did opening the file fail?
     {
         cerr << "Error: Cannot open data.txt!" << endl;
@@ -49,8 +50,8 @@ bool UserDatabase::load(const string& filename)
         userTree.insert(email, User(name, email, watch_history));
     }
     
-    
-    
+    //Set status to loaded
+    m_loaded = true;
     return true;  // Replace this line with correct code.
 }
 

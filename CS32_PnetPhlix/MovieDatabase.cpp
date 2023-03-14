@@ -10,6 +10,9 @@
 
 #include <string>
 #include <vector>
+#include <iostream>
+#include <fstream>
+
 using namespace std;
 
 MovieDatabase::MovieDatabase()
@@ -19,7 +22,60 @@ MovieDatabase::MovieDatabase()
 
 bool MovieDatabase::load(const string& filename)
 {
-    return false;  // Replace this line with correct code.
+    //Check if it's already been loaded
+    if(m_loaded) return false;
+    //Remember to figure out a way to check it it's already been loaded
+    ifstream infile(filename);    // infile is a name of our choosing
+    if ( ! infile )                // Did opening the file fail?
+    {
+        cerr << "Error: Cannot open data.txt!" << endl;
+        return false;
+    }
+    
+    string id;
+    while (getline(infile, id))
+    {
+        //process movie
+        string movie_name;
+        getline(infile, movie_name);
+        string year;
+        getline(infile, year);
+        
+        string d_string;
+        vector<string> directors;
+        getline(infile, d_string);
+        //call something to process the director string
+        process_string(d_string, directors);
+        
+        
+        string a_string;
+        vector<string> actors;
+        getline(infile, a_string);
+        process_string(a_string, actors);
+        
+        string g_string; //Pause
+        vector<string> genres;
+        getline(infile, g_string);
+        process_string(g_string, genres);
+        
+        float rating;
+        infile >> rating;
+        infile.ignore(10000, '\n');
+        
+        
+        //skip a line
+        string foo;
+        getline(infile, foo);
+        
+        //Now that you have all your data, create your trees
+        id_tree.insert(id, Movie(id, movie_name, year, directors, actors, genres, rating));
+        
+    }
+    
+    //Set status to loaded
+    m_loaded = true;
+    return true;
+
 }
 
 Movie* MovieDatabase::get_movie_from_id(const string& id) const
