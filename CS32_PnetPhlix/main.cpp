@@ -62,6 +62,13 @@ int main()
     }
     cout << endl;
     cout << p->get_rating() << endl;
+    
+    cout << "Now testing, get by director" << endl;
+    
+    vector<Movie*> directors_movies = moviedb.get_movies_with_director("M. Raja");
+    for(int i = 0; i < directors_movies.size(); i++){
+        cout << directors_movies[i]->get_title() << endl;
+    }
 }
 
 

@@ -67,7 +67,18 @@ bool MovieDatabase::load(const string& filename)
         getline(infile, foo);
         
         //Now that you have all your data, create your trees
-        id_tree.insert(id, Movie(id, movie_name, year, directors, actors, genres, rating));
+        Movie* movie_ptr =  new Movie(id, movie_name, year, directors, actors, genres, rating);
+        movies.push_back(movie_ptr);
+        //IDTREE
+        id_tree.insert(id, movie_ptr);
+        
+        //OTHERTREES
+        for(int i = 0; i < directors.size(); i++)
+            director_tree.insert(directors[i], movie_ptr);
+        for(int i = 0; i < actors.size(); i++)
+            actor_tree.insert(actors[i], movie_ptr);
+        for(int i = 0; i < genres.size(); i++)
+            genre_tree.insert(genres[i], movie_ptr);
         
     }
     
@@ -79,14 +90,20 @@ bool MovieDatabase::load(const string& filename)
 
 Movie* MovieDatabase::get_movie_from_id(const string& id) const
 {
-    TreeMultimap<std::string, Movie>::Iterator it = id_tree.find(id);
-    if(it.is_valid()) return &it.get_value();
+    TreeMultimap<std::string, Movie*>::Iterator it = id_tree.find(id);
+    if(it.is_valid()) return it.get_value();
     else return nullptr;
 }
 
 vector<Movie*> MovieDatabase::get_movies_with_director(const string& director) const
 {
-    return vector<Movie*>();  // Replace this line with correct code.
+    TreeMultimap<std::string, Movie*>::Iterator it = director_tree.find(director);
+    vector<Movie*> result;
+    while (it.is_valid()) {
+        result.push_back(it.get_value());
+        it.advance();
+    }
+    return result;  // Replace this line with correct code.
 }
 
 vector<Movie*> MovieDatabase::get_movies_with_actor(const string& actor) const

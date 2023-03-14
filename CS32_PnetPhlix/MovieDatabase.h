@@ -26,7 +26,8 @@ class MovieDatabase
 
   private:
     bool m_loaded = false;
-    TreeMultimap<std::string, Movie> id_tree;
+    std::vector<Movie*> movies;
+    TreeMultimap<std::string, Movie*> id_tree;
     TreeMultimap<std::string, Movie*> director_tree;
     TreeMultimap<std::string, Movie*> actor_tree;
     TreeMultimap<std::string, Movie*> genre_tree;
