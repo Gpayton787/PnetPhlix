@@ -19,6 +19,11 @@ MovieDatabase::MovieDatabase()
 {
     // Replace this line with correct code.
 }
+MovieDatabase::~MovieDatabase(){
+    for(int i = 0; i < movies.size(); i++){
+        delete movies.at(i);
+    }
+}
 
 bool MovieDatabase::load(const string& filename)
 {
