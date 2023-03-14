@@ -108,11 +108,23 @@ vector<Movie*> MovieDatabase::get_movies_with_director(const string& director) c
 
 vector<Movie*> MovieDatabase::get_movies_with_actor(const string& actor) const
 {
-    return vector<Movie*>();  // Replace this line with correct code.
+    TreeMultimap<std::string, Movie*>::Iterator it = actor_tree.find(actor);
+    vector<Movie*> result;
+    while (it.is_valid()) {
+        result.push_back(it.get_value());
+        it.advance();
+    }
+    return result;  // Replace this line with correct code.
 }
 
 vector<Movie*> MovieDatabase::get_movies_with_genre(const string& genre) const
 {
-    return vector<Movie*>();  // Replace this line with correct code.
+    TreeMultimap<std::string, Movie*>::Iterator it = genre_tree.find(genre);
+    vector<Movie*> result;
+    while (it.is_valid()) {
+        result.push_back(it.get_value());
+        it.advance();
+    }
+    return result;  // Replace this line with correct code.
 }
 
