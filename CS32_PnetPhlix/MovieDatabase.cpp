@@ -47,7 +47,6 @@ bool MovieDatabase::load(const string& filename)
         //call something to process the director string
         process_string(d_string, directors);
         
-        
         string a_string;
         vector<string> actors;
         getline(infile, a_string);
@@ -80,7 +79,9 @@ bool MovieDatabase::load(const string& filename)
 
 Movie* MovieDatabase::get_movie_from_id(const string& id) const
 {
-    return nullptr;  // Replace this line with correct code.
+    TreeMultimap<std::string, Movie>::Iterator it = id_tree.find(id);
+    if(it.is_valid()) return &it.get_value();
+    else return nullptr;
 }
 
 vector<Movie*> MovieDatabase::get_movies_with_director(const string& director) const

@@ -42,9 +42,26 @@ int main()
     //Moviedatabase test
     MovieDatabase moviedb = MovieDatabase();
     moviedb.load(MOVIE_DATAFILE);
-    moviedb.
-    
-
+    Movie* p = moviedb.get_movie_from_id("ID25779");
+    cout << p->get_id() << endl;
+    cout<< p->get_title() << endl;
+    cout<< p->get_release_year() << endl;
+    vector<string> dirs = p->get_directors();
+    for(int i = 0; i < dirs.size(); i++){
+        cout<< dirs[i] << " ";
+    }
+    cout << endl;
+    vector<string> actors = p->get_actors();
+    for(int i = 0; i < actors.size(); i++){
+        cout<< actors[i] << " ";
+    }
+    cout << endl;
+    vector<string> genres = p->get_genres();
+    for(int i = 0; i < genres.size(); i++){
+        cout<< genres[i] << " ";
+    }
+    cout << endl;
+    cout << p->get_rating() << endl;
 }
 
 

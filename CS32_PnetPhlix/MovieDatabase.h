@@ -45,6 +45,9 @@ class MovieDatabase
                 name += s[i];
             }
         }
+        //check for ending word
+        if(name != "") result.push_back(name);
+        
         return;
     }
 };
