@@ -10,6 +10,8 @@
 
 #include <string>
 #include <vector>
+#include "Movie.h"
+#include <unordered_map>
 
 class UserDatabase;
 class MovieDatabase;
@@ -33,6 +35,9 @@ class Recommender
                                                int movie_count) const;
 
   private:
+    bool hasWatched(std::vector<std::string> watch_history, std::string id) const;
+    const UserDatabase* userdb;
+    const MovieDatabase* moviedb;
 };
 
 #endif // RECOMMENDER_INCLUDED

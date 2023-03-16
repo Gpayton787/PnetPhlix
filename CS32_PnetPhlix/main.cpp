@@ -11,6 +11,7 @@
 #include "Movie.h"
 #include <iostream>
 #include <string>
+#include "Recommender.h"
 //Delete this
 #include "treemm.h"
 using namespace std;
@@ -39,36 +40,29 @@ const string MOVIE_DATAFILE = "/Users/greg/desktop/CS32/CS32_PnetPhlix/CS32_Pnet
 
 int main()
 {
-    //Moviedatabase test
+    //Reccomender test
+    UserDatabase userdb = UserDatabase();
+    userdb.load(USER_DATAFILE);
     MovieDatabase moviedb = MovieDatabase();
     moviedb.load(MOVIE_DATAFILE);
-    Movie* p = moviedb.get_movie_from_id("ID25779");
-    cout << p->get_id() << endl;
-    cout<< p->get_title() << endl;
-    cout<< p->get_release_year() << endl;
-    vector<string> dirs = p->get_directors();
-    for(int i = 0; i < dirs.size(); i++){
-        cout<< dirs[i] << " ";
-    }
-    cout << endl;
-    vector<string> actors = p->get_actors();
-    for(int i = 0; i < actors.size(); i++){
-        cout<< actors[i] << " ";
-    }
-    cout << endl;
-    vector<string> genres = p->get_genres();
-    for(int i = 0; i < genres.size(); i++){
-        cout<< genres[i] << " ";
-    }
-    cout << endl;
-    cout << p->get_rating() << endl;
+    Recommender r = Recommender(userdb, moviedb);
     
-    cout << "Now testing, get by director" << endl;
     
-    vector<Movie*> directors_movies = moviedb.get_movies_with_director("M. Raja");
-    for(int i = 0; i < directors_movies.size(); i++){
-        cout << directors_movies[i]->get_title() << endl;
-    }
+    vector<MovieAndRank> recommendations = r.recommend_movies("AbFow2483@charter.net", 10);
+    User* user = userdb.get_user_from_email("AbFow2483@charter.net");
+    cout<< user->get_full_name() << endl;
+     if (recommendations.empty())
+     cout << "We found no movies to recommend :(.\n";
+     else {
+         for (int i = 0; i < recommendations.size(); i++) {
+             const MovieAndRank& mr = recommendations[i];
+             Movie* m = moviedb.get_movie_from_id(mr.movie_id);
+             cout << i << ". " << m->get_title() << " ("
+             << m->get_release_year() << ")\n Rating: "
+             << m->get_rating() << "\n Compatibility Score: "
+             << mr.compatibility_score << "\n";
+         }
+     }
 }
 
 
@@ -152,3 +146,34 @@ int main()
 // for(int i = 0; i < watch_history.size(); i++){
 // cout << watch_history[i] << endl;
  
+//Movie Database test
+//Moviedatabase test
+//MovieDatabase moviedb = MovieDatabase();
+//moviedb.load(MOVIE_DATAFILE);
+//Movie* p = moviedb.get_movie_from_id("ID25779");
+//cout << p->get_id() << endl;
+//cout<< p->get_title() << endl;
+//cout<< p->get_release_year() << endl;
+//vector<string> dirs = p->get_directors();
+//for(int i = 0; i < dirs.size(); i++){
+//    cout<< dirs[i] << " ";
+//}
+//cout << endl;
+//vector<string> actors = p->get_actors();
+//for(int i = 0; i < actors.size(); i++){
+//    cout<< actors[i] << " ";
+//}
+//cout << endl;
+//vector<string> genres = p->get_genres();
+//for(int i = 0; i < genres.size(); i++){
+//    cout<< genres[i] << " ";
+//}
+//cout << endl;
+//cout << p->get_rating() << endl;
+//
+//cout << "Now testing, get by director" << endl;
+//
+//vector<Movie*> directors_movies = moviedb.get_movies_with_director("M. Raja");
+//for(int i = 0; i < directors_movies.size(); i++){
+//    cout << directors_movies[i]->get_title() << endl;
+//}
