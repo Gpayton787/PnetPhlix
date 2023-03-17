@@ -36,8 +36,3 @@ vector<string> User::get_watch_history() const
 }
 
 //Need a less than operator to compare users
-bool User::operator<(const User& other) const{
-    //If this users email is less than the others
-    if(this->get_email() < other.get_email()) return true;
-    else return false;
-}

@@ -7,6 +7,8 @@
 
 #ifndef TREEMULTIMAP_INCLUDED
 #define TREEMULTIMAP_INCLUDED
+#include <list>
+
 
 template <typename KeyType, typename ValueType>
 class TreeMultimap
@@ -19,7 +21,7 @@ class TreeMultimap
         {
             m_object = nullptr;
         }
-        Iterator(std::vector<ValueType>* p){
+        Iterator(std::list<ValueType>* p){
             m_object = p;
             it = (*m_object).begin();
         }
@@ -41,8 +43,8 @@ class TreeMultimap
         }
 
       private:
-        std::vector<ValueType>* m_object;
-        typename std::vector<ValueType>::iterator it;
+        std::list<ValueType>* m_object;
+        typename std::list<ValueType>::iterator it;
     };
 
     TreeMultimap()
@@ -80,7 +82,7 @@ class TreeMultimap
         }
         
         KeyType m_key;
-        std::vector<ValueType> m_vals;
+        std::list<ValueType> m_vals;
         Node* left = nullptr;
         Node* right = nullptr;
     };

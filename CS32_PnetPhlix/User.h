@@ -21,7 +21,6 @@ class User
     std::vector<std::string> get_watch_history() const;
 
   private:
-    bool operator<(const User& other) const;
     std::string m_name;
     std::string m_email;
     std::vector<std::string> m_watch_history;

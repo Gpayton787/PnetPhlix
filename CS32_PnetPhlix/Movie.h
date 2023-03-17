@@ -35,7 +35,6 @@ class Movie
     std::vector<std::string> m_actors;
     std::vector<std::string> m_genres;
     float m_rating;
-    bool operator<(const Movie& other) const;
 };
 
 #endif // MOVIE_INCLUDED

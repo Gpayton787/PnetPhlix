@@ -41,6 +41,7 @@
 		3733DBBF29BEB3CD003CC7B2 /* users.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = users.txt; sourceTree = "<group>"; };
 		3733DBC029BEB3DA003CC7B2 /* movies.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = movies.txt; sourceTree = "<group>"; };
 		3733DBC129BFCEE2003CC7B2 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+		375F2D1629C3E27F00C27E74 /* report */ = {isa = PBXFileReference; lastKnownFileType = text; path = report; sourceTree = "<group>"; };
 		3776C2C129BC7F540054B932 /* Movie.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Movie.cpp; sourceTree = "<group>"; };
 		37A4543E29BC7FB000F25EF3 /* Movie.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Movie.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -89,6 +90,7 @@
 				370F40F129BD9DCF00C10745 /* Recommender.h */,
 				3733DBC029BEB3DA003CC7B2 /* movies.txt */,
 				3733DBBF29BEB3CD003CC7B2 /* users.txt */,
+				375F2D1629C3E27F00C27E74 /* report */,
 			);
 			path = CS32_PnetPhlix;
 			sourceTree = "<group>";

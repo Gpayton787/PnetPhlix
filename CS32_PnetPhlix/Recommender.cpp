@@ -10,7 +10,7 @@
 #include "UserDatabase.h"
 #include "MovieDatabase.h"
 #include "User.h"
-
+#include <algorithm>
 #include <string>
 #include <vector>
 using namespace std;

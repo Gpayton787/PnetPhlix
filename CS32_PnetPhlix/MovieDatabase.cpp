@@ -12,6 +12,7 @@
 #include <vector>
 #include <iostream>
 #include <fstream>
+#include <cctype>
 
 using namespace std;
 
@@ -75,15 +76,36 @@ bool MovieDatabase::load(const string& filename)
         Movie* movie_ptr =  new Movie(id, movie_name, year, directors, actors, genres, rating);
         movies.push_back(movie_ptr);
         //IDTREE
+        for(int i = 0; i < id.size(); i++){
+            id[i] = tolower(id[i]);
+        }
+        
         id_tree.insert(id, movie_ptr);
         
         //OTHERTREES
-        for(int i = 0; i < directors.size(); i++)
-            director_tree.insert(directors[i], movie_ptr);
-        for(int i = 0; i < actors.size(); i++)
-            actor_tree.insert(actors[i], movie_ptr);
-        for(int i = 0; i < genres.size(); i++)
+        for(int i = 0; i < directors.size(); i++){
+            string s = directors[i];
+            for(int m = 0; m < s.size(); m++){
+                s[m] = tolower(s[m]);
+            }
+            director_tree.insert(s, movie_ptr);
+        }
+        for(int i = 0; i < actors.size(); i++){
+            string s = actors[i];
+            for(int m = 0; m < s.size(); m++){
+                s[m] = tolower(s[m]);
+            }
+            actor_tree.insert(s, movie_ptr);
+        }
+            
+        for(int i = 0; i < genres.size(); i++){
+            string s = genres[i];
+            for(int m = 0; m < s.size(); m++){
+                s[m] = tolower(s[m]);
+            }
             genre_tree.insert(genres[i], movie_ptr);
+        }
+            
         
     }
     
@@ -95,14 +117,22 @@ bool MovieDatabase::load(const string& filename)
 
 Movie* MovieDatabase::get_movie_from_id(const string& id) const
 {
-    TreeMultimap<std::string, Movie*>::Iterator it = id_tree.find(id);
+    string s = id;
+    for(int m = 0; m < s.size(); m++){
+        s[m] = tolower(s[m]);
+    }
+    TreeMultimap<std::string, Movie*>::Iterator it = id_tree.find(s);
     if(it.is_valid()) return it.get_value();
     else return nullptr;
 }
 
 vector<Movie*> MovieDatabase::get_movies_with_director(const string& director) const
 {
-    TreeMultimap<std::string, Movie*>::Iterator it = director_tree.find(director);
+    string s = director;
+    for(int m = 0; m < s.size(); m++){
+        s[m] = tolower(s[m]);
+    }
+    TreeMultimap<std::string, Movie*>::Iterator it = director_tree.find(s);
     vector<Movie*> result;
     while (it.is_valid()) {
         result.push_back(it.get_value());
@@ -113,7 +143,11 @@ vector<Movie*> MovieDatabase::get_movies_with_director(const string& director) c
 
 vector<Movie*> MovieDatabase::get_movies_with_actor(const string& actor) const
 {
-    TreeMultimap<std::string, Movie*>::Iterator it = actor_tree.find(actor);
+    string s = actor;
+    for(int m = 0; m < s.size(); m++){
+        s[m] = tolower(s[m]);
+    }
+    TreeMultimap<std::string, Movie*>::Iterator it = actor_tree.find(s);
     vector<Movie*> result;
     while (it.is_valid()) {
         result.push_back(it.get_value());
@@ -124,7 +158,11 @@ vector<Movie*> MovieDatabase::get_movies_with_actor(const string& actor) const
 
 vector<Movie*> MovieDatabase::get_movies_with_genre(const string& genre) const
 {
-    TreeMultimap<std::string, Movie*>::Iterator it = genre_tree.find(genre);
+    string s = genre;
+    for(int m = 0; m < s.size(); m++){
+        s[m] = tolower(s[m]);
+    }
+    TreeMultimap<std::string, Movie*>::Iterator it = genre_tree.find(s);
     vector<Movie*> result;
     while (it.is_valid()) {
         result.push_back(it.get_value());

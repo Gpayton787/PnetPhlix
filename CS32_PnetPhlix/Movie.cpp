@@ -59,8 +59,3 @@ vector<string> Movie::get_genres() const
     return m_genres;
 }
 
-//Need a less than operator that compares by ID
-bool Movie::operator<(const Movie& other) const{
-    return true;
-}
-

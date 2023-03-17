@@ -40,14 +40,26 @@ const string MOVIE_DATAFILE = "/Users/greg/desktop/CS32/CS32_PnetPhlix/CS32_Pnet
 
 int main()
 {
-    //Reccomender test
+//     UserDatabase userdb = UserDatabase();
+//     userdb.load(USER_DATAFILE);
+//     User* carey = userdb.get_user_from_email("AbFow2483@charter.net");
+//     if(carey == nullptr) cout << "No user in db" << endl;
+//     else cout << carey->get_full_name() <<endl;
+//
+//     cout << carey->get_email() << endl;
+//     vector<string> watch_history = carey->get_watch_history();
+//    for(int i = 0; i < watch_history.size(); i++){
+//        cout << watch_history[i] << endl;
+//    }
+    
+//    Reccomender test
     UserDatabase userdb = UserDatabase();
     userdb.load(USER_DATAFILE);
     MovieDatabase moviedb = MovieDatabase();
     moviedb.load(MOVIE_DATAFILE);
     Recommender r = Recommender(userdb, moviedb);
-    
-    
+
+
     vector<MovieAndRank> recommendations = r.recommend_movies("AbFow2483@charter.net", 10);
     User* user = userdb.get_user_from_email("AbFow2483@charter.net");
     cout<< user->get_full_name() << endl;

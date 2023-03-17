@@ -1,0 +1,43 @@
+
+I was able to finish everything, I think, with no banned STL components or noticeable bugs.
+
+Testing
+
+For User I inserted a made up user and called it's member functions:
+     vector<string> watch_history = {"yomom", "godzilla", "naruto"};
+     User greg = User("greg", "greg@gmail.com", watch_history);
+     cout<< greg.get_email() << endl;
+     cout<< greg.get_full_name() << endl;
+     cout<< greg.get_watch_history()[1] << endl;
+
+For Movie I did the same thing:
+     vector<string> dummyvector = {"dummy1", "dummy2", "dummy3"};
+     Movie avengers = Movie("ID23829", "Avengers", "2013", dummyvector, dummyvector, dummyvector, 3.2);
+     cout<< avengers.get_id() << endl;
+     cout<< avengers.get_title() << endl;
+     cout<< avengers.get_rating() << endl;
+     cout << avengers.get_release_year() << endl;
+     cout << avengers.get_actors()[0] << endl;
+     cout << avengers.get_directors()[1] << endl;
+     cout << avengers.get_genres()[2] << endl;
+For tree I created 
+     TreeMultimap<string, int> tree;
+     string p1 = "Greg";
+     string p2 = "Alfonso";
+     string p3 = "Zeke";
+     tree.insert(p1, 10);
+     tree.insert(p1, 50);
+     tree.insert(p1, 80);
+     tree.insert(p2, 10);
+     tree.insert(p2, 3948);
+     tree.insert(p3, 10);
+     
+     TreeMultimap<string, int>::Iterator it;
+     it = tree.find("Alfonso");
+     while(it.is_valid()){
+         cout<< it.get_value() << endl;
+         it.advance();
+     }
+     it = tree.find("laura");
+     if (!it.is_valid())
+     std::cout << "laura is not in the multimap!\n";

@@ -47,7 +47,9 @@ bool UserDatabase::load(const string& filename)
         //Skip a line
         string foo;
         getline(infile, foo);
-        userTree.insert(email, User(name, email, watch_history));
+        User* user = new User(name, email, watch_history);
+        users.push_back(user);
+        userTree.insert(email, user);
     }
     
     //Set status to loaded
@@ -57,8 +59,12 @@ bool UserDatabase::load(const string& filename)
 
 User* UserDatabase::get_user_from_email(const string& email) const
 {
-    TreeMultimap<string, User>::Iterator it = userTree.find(email);
-    if(!it.is_valid()) return nullptr;
-    User* userptr = &it.get_value();
-    return userptr;
+    TreeMultimap<string, User*>::Iterator it = userTree.find(email);
+    return it.get_value();
+}
+
+UserDatabase::~UserDatabase(){
+    for(int i = 0; i < users.size(); i++){
+        delete users[i];
+    }
 }
